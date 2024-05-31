@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de carros</title>
+</head>
+<body>
+    <h1>Lista de carros</h1>
+
+    <a href="/car/novo">Adicionar um carro</a>
+
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Ano</th>
+                <th>Vendido</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for car in cars %}
+                <tr>
+                    <td>{{ car.ID }}</td>
+                    <td>{{ car.marca }}</td>
+                    <td>{{ car.modelo }}</td>
+                    <td>{{ car.ano }}</td>
+                    <td>{% if car.vendido %}SIM{% else %}NÃO{% endif %}</td>
+                    <td>
+                        <a href="/car/{{car.ID}}/remove">Excluir</a>/<a href="/car/{{car.ID}}">Editar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

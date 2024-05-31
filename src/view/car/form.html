@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário do carro</title>
+</head>
+<body>
+    <h1>Formulário</h1>
+
+    <div style="margin: 0px;">
+        <form action="/car/{{car.ID}}" method="post">
+
+
+            <label for="marca">ID:</label>
+            <input type="text" id="ID" name="ID" value="{{car.ID}}" readonly><br>
+            
+
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca" name="marca" value="{{car.marca}}" required><br>
+
+            <label for="modelo">Modelo:</label>
+            <input type="text" id="modelo" name="modelo" value="{{car.modelo}}" required><br>
+
+            <label for="ano">Ano:</label>
+            <input type="text" id="ano" name="ano" value="{{car.ano}}" required><br>
+
+            <label for="vendido">Vendido:</label>
+            <input type="checkbox" id="vendido" name="vendido" {{ 'checked' if car.vendido }}><br>
+
+            <input type="submit" value="{% if car.ID == 'novo' %}Criar{% else %}Editar{% endif %}">
+        </form>
+    </div>
+    
+    <a href="/car">Voltar a lista</a>
+
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+</body>
+</html>
